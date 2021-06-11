@@ -8,9 +8,9 @@ export default function SignedIn() {
         <Image
           avatar
           spaced="right"
-          src="https://yt3.ggpht.com/ytc/AAUvwngwJNZN3WObqCSP3MlLYGiR3cGFXbOkO3vWScSp2A=s900-c-k-c0x00ffffff-no-rj"
+          src="https://pbs.twimg.com/profile_images/1380177773726154753/GwPoXBNK_400x400.jpg"
         />
-        <Dropdown pointing="top right" text="Engin">
+        <Dropdown pointing="top right" text="Burak">
           <Dropdown.Menu>
             <Dropdown.Item text="Bilgilerim" icon="info" />
             <Dropdown.Item text="Çıkış Yap" icon="sign-out" />
