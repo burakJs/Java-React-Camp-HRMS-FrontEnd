@@ -1,7 +1,10 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
 import JobAdList from "../pages/JobAdList";
+import { Route } from "react-router";
 import Filters from "./Filters";
+import { Switch } from "react-router-dom";
+import JobAdDetails from "../pages/JobAdDetails";
 
 export default function Dashboard() {
   return (
@@ -12,7 +15,13 @@ export default function Dashboard() {
             <Filters />
           </Grid.Column>
           <Grid.Column width={12}>
-            <JobAdList />
+            <Switch>
+              <Route exact path="/" component={JobAdList} />
+              <Route exact path="/jobAds" component={JobAdList} />
+              <Route exact path="/jobAds/:id" component={JobAdDetails} />
+
+              <Route render={() => <h1>Route not found</h1>} />
+            </Switch>
           </Grid.Column>
         </Grid.Row>
       </Grid>

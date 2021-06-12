@@ -1,45 +1,28 @@
-import React from "react";
-import { Button, Card, Grid, Label, Image } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Card, Grid } from "semantic-ui-react";
+import JobAdListCard from "../layouts/JobAdListCard";
+import JobAdService from "../services/jobAdService";
 
 export default function JobAdList() {
+  const [jobAds, setJobAds] = useState([]);
+
+  useEffect(() => {
+    let jobAdService = new JobAdService();
+    jobAdService
+      .getJobAds()
+      .then((result) => setJobAds(result.data.data))
+      .catch((e) => console.log(e));
+  }, []);
+
   return (
     <div>
       <Card.Group centered>
         <Grid padded>
-          <Grid.Row columns={2}>
-            <Grid.Column>
-              <Card>
-                <Card.Content textAlign="left">
-                  <Image floated="right">
-                    <Label circular size="huge">
-                      T
-                    </Label>
-                  </Image>
-                  <Card.Header>Turkcell</Card.Header>
-                  <Card.Meta>Flutter Developer</Card.Meta>
-                  <Card.Description>
-                    Flutter Bilen mallar aranıyor...
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            <Grid.Column>
-              <Card>
-                <Card.Content textAlign="left">
-                  <Image floated="right">
-                    <Label circular size="huge">
-                      A
-                    </Label>
-                  </Image>
-                  <Card.Header>Apple</Card.Header>
-                  <Card.Meta>IOS Developer</Card.Meta>
-                  <Card.Description>
-                    Swift bilen reisler aranır...
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          </Grid.Row>
+          {jobAds.map((jobAd, index) => (
+            <div key={jobAd.id}>
+              <JobAdListCard jobAd={jobAd} />
+            </div>
+          ))}
         </Grid>
       </Card.Group>
     </div>
