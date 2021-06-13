@@ -40,7 +40,6 @@ export default function Filters() {
       });
       setJobPositions(jobPosList);
       setJobPositionsIsLoading(false);
-      console.log(jobPositionsIsLoading);
     });
   }, []);
   return (

@@ -8,12 +8,22 @@ export default function PortfolioList() {
     "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg";
   const [portfolioList, setPortfolioList] = useState([]);
   const levelColor = ["red", "orange", "yellow", "olive", "green"];
+  const [SPACES, setSPACES] = useState(0);
+
   useEffect(() => {
     portfolioService
       .getAll()
       .then((result) => setPortfolioList(result.data.data));
   }, []);
 
+  const fillSpace = (languageName) => {
+    let fill = "";
+    for (let i = 0; i < SPACES - languageName.length; i++) {
+      fill += "\xa0";
+    }
+    console.log(SPACES);
+    return fill;
+  };
   return (
     <div>
       <Card.Group>
@@ -107,10 +117,14 @@ export default function PortfolioList() {
                   ) : (
                     portfolio.languages.map((language) => (
                       <Card.Content textAlign="left" key={language.id}>
+                        {language.languageName.length > SPACES
+                          ? setSPACES(language.languageName.length + 8)
+                          : null}
                         <br />
                         <Card.Header>
                           <Header as="h4">
                             {language.languageName}
+                            {fillSpace(language.languageName)}
                             {levelColor
                               .slice(0, Number(language.languageLevel))
                               .map((color) => (
