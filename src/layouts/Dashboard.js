@@ -5,6 +5,7 @@ import { Route } from "react-router";
 import Filters from "./Filters";
 import { Switch } from "react-router-dom";
 import JobAdDetails from "../pages/JobAdDetails";
+import PortfolioList from "../pages/PortfolioList";
 
 export default function Dashboard() {
   return (
@@ -19,7 +20,7 @@ export default function Dashboard() {
               <Route exact path="/" component={JobAdList} />
               <Route exact path="/jobAds" component={JobAdList} />
               <Route exact path="/jobAds/:id" component={JobAdDetails} />
-
+              <Route exact path="/portfolios" component={PortfolioList} />
               <Route render={() => <h1>Route not found</h1>} />
             </Switch>
           </Grid.Column>

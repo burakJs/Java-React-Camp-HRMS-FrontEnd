@@ -11,19 +11,6 @@ export default function Filters() {
   const [jobPositions, setJobPositions] = useState([]);
   const [jobPositionsIsLoading, setJobPositionsIsLoading] = useState(true);
 
-  const positionArray = [
-    {
-      key: 1,
-      text: "Flutter Dev",
-      value: 1,
-    },
-    {
-      key: 2,
-      text: "Swift Dev",
-      value: 2,
-    },
-  ];
-
   useEffect(() => {
     let cityList = [];
     let jobPosList = [];
