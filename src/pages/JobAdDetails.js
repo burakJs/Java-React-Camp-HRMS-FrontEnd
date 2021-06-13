@@ -28,24 +28,22 @@ export default function JobAdDetails() {
           content={jobAd.companyName}
         ></Header>
 
-        <Label>
-          <Header as="h5">
-            <Icon name="map marker alternate" />
-            {jobAd.city.cityName}
-          </Header>
-        </Label>
+        <Header as="h5">
+          <Icon name="map marker alternate" />
+          {jobAd.city.cityName}
+        </Header>
+
         <Header as="h4">{jobAd.description}</Header>
-        <Label icon="money">
-          <Header as="h4">
-            <Icon name="lira sign" /> {jobAd.salaryMin} - {jobAd.salaryMax}
-          </Header>
-          <Header as="h4">
-            <Icon name="calendar check" /> {jobAd.createdDate}
-          </Header>
-          <Header as="h4">
-            <Icon name="calendar times" /> {jobAd.lastDate}
-          </Header>
-        </Label>
+
+        <Header as="h4">
+          <Icon name="lira sign" /> {jobAd.salaryMin} - {jobAd.salaryMax}
+        </Header>
+        <Header as="h4">
+          <Icon name="calendar check" /> {jobAd.createdDate}
+        </Header>
+        <Header as="h4">
+          <Icon name="calendar times" /> {jobAd.lastDate}
+        </Header>
       </Container>
     </>
   );

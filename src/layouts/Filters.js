@@ -1,5 +1,6 @@
 import React from "react";
-import { Menu, Input, Dropdown, Label } from "semantic-ui-react";
+import { Menu, Input, Dropdown, Button } from "semantic-ui-react";
+import JobAdService from "../services/jobAdService";
 
 export default function Filters() {
   const positionArray = [
@@ -27,10 +28,27 @@ export default function Filters() {
       value: 2,
     },
   ];
+  const sortUp = () => {
+    let jobAdService = new JobAdService();
+    jobAdService
+      .add(
+        1,
+        "Samsung",
+        20,
+        "2021-01-21",
+        "Bu bir deneme açıklamasıdır",
+        1,
+        4250,
+        2750
+      )
+      .then((data) => console.log(data.data))
+      .catch((error) => console.log(error));
+    console.log(new Date().toISOString().slice(0, 10));
+  };
   return (
     <div>
       <Menu vertical inverted>
-        <Menu.Menu>
+        <Menu.Menu style={{}}>
           <Menu.Item>
             <Input icon="search" placeholder="Şirket İsmi" />
           </Menu.Item>
@@ -49,6 +67,12 @@ export default function Filters() {
               options={cityArray}
               clearable
             ></Dropdown>
+          </Menu.Item>
+          <Menu.Item>
+            <Button.Group>
+              <Button icon="sort numeric up" onClick={sortUp} />
+              <Button icon="sort numeric down" />
+            </Button.Group>
           </Menu.Item>
         </Menu.Menu>
       </Menu>
