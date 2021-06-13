@@ -5,8 +5,8 @@ export default class LanguageService {
 
   add(name, level, portfolioId) {
     return axios.post("http://localhost:8080/api/languages/add", {
-      name: name,
-      level: level,
+      languageName: name,
+      languageLevel: level,
       portfolioId: portfolioId,
     });
   }
