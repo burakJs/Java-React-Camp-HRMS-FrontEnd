@@ -9,7 +9,7 @@ export default function JobAdList() {
   useEffect(() => {
     let jobAdService = new JobAdService();
     jobAdService
-      .getJobAds()
+      .getAllSortedByDate(1)
       .then((result) => setJobAds(result.data.data))
       .catch((e) => console.log(e));
   }, []);

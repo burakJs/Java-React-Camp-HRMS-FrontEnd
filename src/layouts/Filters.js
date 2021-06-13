@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, Input, Dropdown, Button } from "semantic-ui-react";
-import JobAdService from "../services/jobAdService";
+import CityService from "../services/cityService";
 
 export default function Filters() {
+  const cityService = new CityService();
+  const [cities, setCities] = useState([]);
+  const [cityIsLoading, setCityIsLoading] = useState(true);
+
   const positionArray = [
     {
       key: 1,
@@ -16,41 +20,32 @@ export default function Filters() {
     },
   ];
 
-  const cityArray = [
-    {
-      key: 1,
-      text: "Eskişehir",
-      value: 1,
-    },
-    {
-      key: 2,
-      text: "Ankara",
-      value: 2,
-    },
-  ];
-  const sortUp = () => {
-    let jobAdService = new JobAdService();
-    jobAdService
-      .add(
-        1,
-        "Samsung",
-        20,
-        "2021-01-21",
-        "Bu bir deneme açıklamasıdır",
-        1,
-        4250,
-        2750
-      )
-      .then((data) => console.log(data.data))
-      .catch((error) => console.log(error));
-    console.log(new Date().toISOString().slice(0, 10));
-  };
+  useEffect(() => {
+    let cityList = [];
+
+    cityService.getAll().then((result) => {
+      result.data.data.map((city) => {
+        cityList.push({
+          key: city.id,
+          text: city.cityName,
+          value: city.id,
+        });
+      });
+      setCities(cityList);
+      setCityIsLoading(false);
+    });
+  }, []);
   return (
     <div>
       <Menu vertical inverted>
         <Menu.Menu style={{}}>
           <Menu.Item>
-            <Input icon="search" placeholder="Şirket İsmi" />
+            <Input
+              icon="search"
+              placeholder="Şirket İsmi"
+              //TODO: Redux öğrenince anca :D
+              // onChange={(e) => filterByCompanyName(e.target.value)}
+            />
           </Menu.Item>
           <Menu.Item>
             <Dropdown
@@ -64,13 +59,14 @@ export default function Filters() {
             <Dropdown
               placeholder="Şehir"
               selection
-              options={cityArray}
+              options={cities}
               clearable
+              loading={cityIsLoading}
             ></Dropdown>
           </Menu.Item>
           <Menu.Item>
             <Button.Group>
-              <Button icon="sort numeric up" onClick={sortUp} />
+              <Button icon="sort numeric up" />
               <Button icon="sort numeric down" />
             </Button.Group>
           </Menu.Item>
