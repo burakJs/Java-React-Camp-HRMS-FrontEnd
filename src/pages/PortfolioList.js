@@ -50,7 +50,7 @@ export default function PortfolioList() {
                 <Card.Description>
                   <Header as="h3">Eğitim</Header>
 
-                  {portfolio.educations.length == 0 ? (
+                  {portfolio.educations.length === 0 ? (
                     <Label style={{ marginBottom: 2 + "em" }}>
                       Eğitim Bulunmamaktadır
                     </Label>
@@ -79,7 +79,7 @@ export default function PortfolioList() {
               <Card style={{ padding: 1 + "em" }} fluid>
                 <Card.Description>
                   <Header as="h3">Deneyimler</Header>
-                  {portfolio.experiences.length == 0 ? (
+                  {portfolio.experiences.length === 0 ? (
                     <Label style={{ marginBottom: 2 + "em" }}>
                       Deneyim Bulunmamaktadır
                     </Label>
@@ -110,7 +110,7 @@ export default function PortfolioList() {
               <Card style={{ padding: 1 + "em" }} fluid>
                 <Card.Description>
                   <Header as="h3">Bildiği Diller</Header>
-                  {portfolio.languages.length == 0 ? (
+                  {portfolio.languages.length === 0 ? (
                     <Label style={{ marginBottom: 2 + "em" }}>
                       Dil Bulunmamaktadır
                     </Label>
@@ -146,7 +146,7 @@ export default function PortfolioList() {
               <Card style={{ padding: 1 + "em" }} fluid>
                 <Card.Description>
                   <Header as="h3">Yetenekler</Header>
-                  {portfolio.skills.length == 0 ? (
+                  {portfolio.skills.length === 0 ? (
                     <Label style={{ marginBottom: 2 + "em" }}>
                       Yetenek Bulunmamaktadır
                     </Label>

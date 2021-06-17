@@ -1,10 +1,10 @@
 export default class EducationService {
   getAll() {
-    return axios.get("http://localhost:8080/api/education/getAll");
+    return axios.get("http://localhost:8080/api/educations/getAll");
   }
 
   add(departmentName, entryDate, graduationDate, portfolioId, schoolName) {
-    return axios.post("http://localhost:8080/api/education/add", {
+    return axios.post("http://localhost:8080/api/educations/add", {
       departmentName: departmentName,
       entryDate: entryDate,
       graduationDate: graduationDate,
@@ -15,7 +15,7 @@ export default class EducationService {
 
   deleteById(id) {
     return axios.post(
-      "http://localhost:8080/api/education/deleteById?id=" + id
+      "http://localhost:8080/api/educations/deleteById?id=" + id
     );
   }
 }

@@ -67,7 +67,9 @@ export default class JobAdService {
     description,
     jobPosId,
     salaryMax,
-    salaryMin
+    salaryMin,
+    jobWorkingTimeId,
+    jobTypeId
   ) {
     return axios.post("http://localhost:8080/api/jobAds/add", {
       city: {
@@ -80,6 +82,12 @@ export default class JobAdService {
       description: description,
       jobPosition: {
         id: jobPosId,
+      },
+      jobType: {
+        id: jobTypeId,
+      },
+      jobWorkingTime: {
+        id: jobWorkingTimeId,
       },
       salaryMax: salaryMax,
       salaryMin: salaryMin,
