@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Header, Icon, Image, Label } from "semantic-ui-react";
+import { Button, Card, Header, Icon, Image, Label } from "semantic-ui-react";
 import PortfolioService from "../services/portfolioService";
 
 export default function PortfolioList() {
@@ -166,6 +166,7 @@ export default function PortfolioList() {
                 </Card.Description>
               </Card>
             </Card.Content>
+            <Button color="black">Düzenle</Button>
           </Card>
         ))}
       </Card.Group>
